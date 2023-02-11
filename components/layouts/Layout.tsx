@@ -6,7 +6,10 @@ type Props = {
     title?: string
 }
 
+const origin = (typeof window === 'undefined') ? '' : window.location.origin;
+
 export const Layout = ({ children, title }: Props) => {
+
     return (
         <>
             <Head>
@@ -14,6 +17,10 @@ export const Layout = ({ children, title }: Props) => {
                 <meta name="author" content="Edwin Hernández" />
                 <meta name="description" content={`Información sobre el pokémon ${ title }`} />
                 <meta name="keywords" content={`${ title }, pokémon, pokedex`} />
+
+                <meta property="og:title" content={`Información sobre ${ title }`} />
+                <meta property="og:description" content={`Esta es la página sobre ${ title }`} />
+                <meta property="og:image" content={`${ origin }/images/banner.png`} />
             </Head>
 
             <Navbar />
